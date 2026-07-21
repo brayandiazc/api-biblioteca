@@ -5,10 +5,21 @@
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "node --watch src/server.js"
+    "dev": "node --watch src/server.js",
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "clean": "rm -rf dist",
+    "prebuild:prod": "npm run clean"
   },
   "keywords": [],
   "author": "Brayan Diaz C",
   "license": "MIT",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^8.0.1",
+    "@babel/preset-env": "^8.0.2",
+    "babel-loader": "^10.1.1",
+    "webpack": "^5.108.4",
+    "webpack-cli": "^7.2.1"
+  }
 }
