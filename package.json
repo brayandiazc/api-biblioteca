@@ -1,0 +1,14 @@
+{
+  "name": "api-biblioteca",
+  "version": "1.0.0",
+  "description": "API de gestión de una biblioteca",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": [],
+  "author": "Brayan Diaz C",
+  "license": "MIT",
+  "type": "module"
+}
