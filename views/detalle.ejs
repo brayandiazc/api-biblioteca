@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Detalle del libro</title>
+  </head>
+  <body>
+    <a href="/">← Volver</a>
+    <!-- El controlador puede pasar libro=undefined; la vista decide qué mostrar. -->
+    <% if (libro) { %>
+    <h1><%= libro.titulo %></h1>
+    <p>Autor: <%= libro.autor %></p>
+    <p>Disponible: <%= libro.disponible ? "Sí" : "No" %></p>
+    <% } else { %>
+    <p>Libro no encontrado.</p>
+    <% } %>
+  </body>
+</html>

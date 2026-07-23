@@ -21,5 +21,9 @@
     "babel-loader": "^10.1.1",
     "webpack": "^5.108.4",
     "webpack-cli": "^7.2.1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1",
+    "express": "^5.2.1"
   }
 }
