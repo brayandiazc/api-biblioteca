@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Catálogo de libros</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+  </head>
+  <body class="container">
+    <h1>Catálogo de libros</h1>
+    <table border="1" cellpadding="6">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Autor</th>
+          <th>Disponible</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <% %> ejecuta JS (aquí un bucle); <%= %> imprime un valor escapado. -->
+        <% libros.forEach((l) => { %>
+        <tr>
+          <td><%= l.id %></td>
+          <!-- El enlace arma la URL de detalle con el id de cada libro. -->
+          <td><a href="/libros/<%= l.id %>/ver"><%= l.titulo %></a></td>
+          <td><%= l.autor %></td>
+          <td><%= l.disponible ? "Sí" : "No" %></td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  </body>
+</html>
