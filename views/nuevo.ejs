@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <title>Nuevo libro</title>
+  </head>
+  <body>
+    <a href="/">← Volver al catálogo</a>
+    <h1>Nuevo libro</h1>
+
+    <!-- Si el modelo rechazó los datos, mostramos por qué. -->
+    <% if (errores.length) { %>
+    <ul style="color: crimson">
+      <% errores.forEach((mensaje) => { %>
+      <li><%= mensaje %></li>
+      <% }) %>
+    </ul>
+    <% } %>
+
+    <!-- method="post" + action: el navegador manda los campos como
+         x-www-form-urlencoded a esa ruta. Sin method, iría por GET. -->
+    <form method="post" action="/libros/nuevo">
+      <p>
+        <!-- El "name" de cada campo es la clave que llega en req.body. -->
+        <label>Título: <input name="titulo" value="<%= valores.titulo || '' %>" /></label>
+      </p>
+      <p>
+        <label>Autor: <input name="autor" value="<%= valores.autor || '' %>" /></label>
+      </p>
+      <p>
+        <label>Año: <input name="anio" type="number" value="<%= valores.anio || '' %>" /></label>
+      </p>
+      <p>
+        <!-- Un checkbox solo se envía si está marcado; el servidor lo traduce. -->
+        <label>
+          <input type="checkbox" name="disponible" <%= valores.disponible === 'on' || !Object.keys(valores).length ? 'checked' : '' %> />
+          Disponible
+        </label>
+      </p>
+      <button type="submit">Guardar</button>
+    </form>
+  </body>
+</html>

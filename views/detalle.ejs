@@ -10,7 +10,13 @@
     <% if (libro) { %>
     <h1><%= libro.titulo %></h1>
     <p>Autor: <%= libro.autor %></p>
+    <!-- anio es opcional en el esquema: puede no venir. -->
+    <% if (libro.anio) { %>
+    <p>Año: <%= libro.anio %></p>
+    <% } %>
     <p>Disponible: <%= libro.disponible ? "Sí" : "No" %></p>
+    <!-- timestamps: true agregó createdAt/updatedAt automáticamente. -->
+    <p><small>Registrado: <%= libro.createdAt.toLocaleString("es-CL") %></small></p>
     <% } else { %>
     <p>Libro no encontrado.</p>
     <% } %>

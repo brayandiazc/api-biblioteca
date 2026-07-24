@@ -3,19 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <title>Catálogo de libros</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
-    >
   </head>
-  <body class="container">
+  <body>
     <h1>Catálogo de libros</h1>
+    <p><a href="/libros/nuevo">+ Agregar libro</a></p>
+
+    <!-- Con la base recién creada no hay documentos todavía. -->
+    <% if (!libros.length) { %>
+    <p>Todavía no hay libros. <a href="/libros/nuevo">Agrega el primero</a>.</p>
+    <% } else { %>
     <table border="1" cellpadding="6">
       <thead>
         <tr>
           <th>ID</th>
           <th>Título</th>
           <th>Autor</th>
+          <th>Año</th>
           <th>Disponible</th>
         </tr>
       </thead>
@@ -23,14 +26,18 @@
         <!-- <% %> ejecuta JS (aquí un bucle); <%= %> imprime un valor escapado. -->
         <% libros.forEach((l) => { %>
         <tr>
-          <td><%= l.id %></td>
-          <!-- El enlace arma la URL de detalle con el id de cada libro. -->
-          <td><a href="/libros/<%= l.id %>/ver"><%= l.titulo %></a></td>
+          <!-- Ahora el id es el _id que genera MongoDB, no un número nuestro. -->
+          <td><%= l._id %></td>
+          <!-- El enlace arma la URL de detalle con el _id de cada libro. -->
+          <td><a href="/libros/<%= l._id %>/ver"><%= l.titulo %></a></td>
           <td><%= l.autor %></td>
+          <!-- anio es opcional: puede no venir en el documento. -->
+          <td><%= l.anio ?? "—" %></td>
           <td><%= l.disponible ? "Sí" : "No" %></td>
         </tr>
         <% }) %>
       </tbody>
     </table>
+    <% } %>
   </body>
 </html>
